@@ -1,5 +1,5 @@
-const {EchoRequest, EchoResponse} = require('./js/echo_pb');
-const {EchoServiceClient} = require('./js/echo_grpc_web_pb');
+import { EchoRequest, EchoResponse } from './js/echo_pb';
+import { EchoServiceClient } from './js/echo_grpc_web_pb';
 
 var echoService = new EchoServiceClient('http://localhost:8199');
 

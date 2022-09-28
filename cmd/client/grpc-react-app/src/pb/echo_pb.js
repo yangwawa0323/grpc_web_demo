@@ -320,4 +320,6 @@ proto.grpc_web_demo1.EchoResponse.prototype.setMessage = function(value) {
 };
 
 
-goog.object.extend(exports, proto.grpc_web_demo1);
+// goog.object.extend(exports, proto.grpc_web_demo1);
+
+export default proto.grpc_web_demo1;

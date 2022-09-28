@@ -17,11 +17,13 @@
 
 
 const grpc = {};
-grpc.web = require('grpc-web');
+import web from 'grpc-web';
+
+grpc.web = web
 
 const proto = {};
-proto.grpc_web_demo1 = require('./echo_pb.js');
-
+import grpc_web_demo1 from './echo_pb.js';
+proto.grpc_web_demo1 = grpc_web_demo1
 /**
  * @param {string} hostname
  * @param {?Object} credentials
