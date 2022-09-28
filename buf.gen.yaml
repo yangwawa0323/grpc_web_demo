@@ -1,0 +1,19 @@
+version: v1
+plugins:
+  - name: go
+    out: ./pb
+    opt: paths=source_relative
+  - name: go-grpc
+    out: ./pb
+    opt: paths=source_relative
+  - name: gorm
+    out: ./pb
+    opt: paths=source_relative
+  - name: js
+    out: ./cmd/client/js
+    opt: import_style=commonjs
+  - name: grpc-web
+    # js_out: ./js
+    out: ./cmd/client/js
+    opt: import_style=commonjs,mode=grpcweb
+    # opt: paths=source_relative

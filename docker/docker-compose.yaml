@@ -1,0 +1,11 @@
+version: "3.0"
+
+services:
+  nginx:
+    image: nginx
+    ports:
+     - "8088:80"
+     - "8199:8199"
+    volumes:
+     - ./conf.d/grpc_proxy.conf:/etc/nginx/conf.d/default.conf:ro
+     - ./html:/var/www/html
