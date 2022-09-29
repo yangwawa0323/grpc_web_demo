@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package grpc_web_demo1;
+package grpc_web_demo.echo.v1;
 
 
 option go_package = ".;pb";

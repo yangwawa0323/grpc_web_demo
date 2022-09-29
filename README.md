@@ -55,3 +55,55 @@ We put the client html files of directory mapping to the volume of the nginx doc
 ## The next...
 
 We'll use react to write a new `index.html` page with input form and submit button. You are post the message that you inputed.
+
+
+## The new unary gRPC find user example
+
+![gRPC-react-app](./asset/gRPC-react-app.gif)
+
+
+go to the `cmd\client\grpc-react-app` folder, use **npm install** install all the package dependencies.
+
+```shell
+  $ npm install
+  $ npm run dev
+```
+and open the browser typed the link that the terminal showed.
+
+I wrote a new example which has two unary gRPC request. 
+
+> NOTE: due to `protoc-gen-grpc-web` command can only produces the *commonJS* syntax, You have to do some modification manually to convert the *commonJS* to **ES2016** or **ESM** syntax if you are using `React` frontend framework.
+> 1st , I am use the `cjs-to-es6` javascript utility command to convert most of **`require()`** to **`import`** , and **`module.exports`** to **`export default`**. But with one exception, the `cjs-to-es6` command cannot convert the `object.attribute = require()` syntax. My solution is:
+> * declare a new const variable name to `require()` 
+> ```javascript
+>   const grpc = {};
+>   grpc.web = require('grpc-web');
+> ```
+> * and extends the object.attribute
+> ```javascript
+>   const grpc = {};
+>   const web = require('grpc-web');
+>   grpc.web = web
+> ```
+> * after this modification, run the `cjs-to-es6` again
+
+There is final result.
+
+```javascript
+const grpc = {};
+- grpc.web = require('grpc-web');
++ import web from 'grpc-web';
++ grpc.web = web;
+
+import user_v1_user_pb from '../../user/v1/user_pb.js';
+const proto = {};
+proto.grpc_web_demo = {};
+proto.grpc_web_demo.user = {};
+- proto.grpc_web_demo.user.v1  = require('./user_service_pb.js');
++ import v1 from './user_service_pb.js';
++ proto.grpc_web_demo.user.v1 = v1 
+``` 
+
+### to be continue...
+
+The next step , I will put all of applications to three different docker image. One for frontend , one for the gRPC proxy, and the last one for gRPC server.

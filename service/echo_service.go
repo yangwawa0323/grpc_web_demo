@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/yangwawa0323/grpc_web_demo/pb"
+	pb "github.com/yangwawa0323/grpc_web_demo/pb/echo/v1"
 )
 
 type EchoServer struct {

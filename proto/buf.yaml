@@ -5,3 +5,8 @@ breaking:
 lint:
   use:
     - DEFAULT
+  except:
+    - PACKAGE_DIRECTORY_MATCH
+  ignore_only:
+    PACKAGE_VERSION_SUFFIX:
+      - options/gorm.proto

@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             (unknown)
-// source: echo.proto
+// source: echo/v1/echo.proto
 
 package pb
 
@@ -35,7 +35,7 @@ func NewEchoServiceClient(cc grpc.ClientConnInterface) EchoServiceClient {
 
 func (c *echoServiceClient) Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error) {
 	out := new(EchoResponse)
-	err := c.cc.Invoke(ctx, "/grpc_web_demo1.EchoService/Echo", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/grpc_web_demo.echo.v1.EchoService/Echo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _EchoService_Echo_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc_web_demo1.EchoService/Echo",
+		FullMethod: "/grpc_web_demo.echo.v1.EchoService/Echo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(EchoServiceServer).Echo(ctx, req.(*EchoRequest))
@@ -92,7 +92,7 @@ func _EchoService_Echo_Handler(srv interface{}, ctx context.Context, dec func(in
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var EchoService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "grpc_web_demo1.EchoService",
+	ServiceName: "grpc_web_demo.echo.v1.EchoService",
 	HandlerType: (*EchoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -101,5 +101,5 @@ var EchoService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "echo.proto",
+	Metadata: "echo/v1/echo.proto",
 }

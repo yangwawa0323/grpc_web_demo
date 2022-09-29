@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package grpc_web_demo.user.v1;
+
+option go_package = ".;pb";
+
+import "user/v1/user.proto";
+
+
+message SearchByNameRequest {
+	string username  = 1;
+};
+
+message SearchByNameResponse {
+	User user  = 1;
+};
+
+
+message SearchByGenderRequest {
+	string gender = 1;
+};
+
+message SearchByGenderResponse {
+	repeated  User users = 1;
+}
+
+// message SearchByRangeOfAgeRequest {
+// 	uint32 min_age = 1;
+// 	uint32 max_age = 2;
+// }
+
+// message SearchByRangeOfAgeResponse {
+// 	repeated  User users = 1;
+// }
+
+service UserSearchService {
+	rpc SearchByName(SearchByNameRequest) returns (SearchByNameResponse);
+	rpc SearchByGender(SearchByGenderRequest) returns (SearchByGenderResponse);
+	// rpc SearchByRangeOfAge(SearchByRangeOfAgeRequest) returns (SearchByRangeOfAgeResponse);
+};

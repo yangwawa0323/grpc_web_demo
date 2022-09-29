@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for grpc_web_demo1
+ * @fileoverview gRPC-Web generated client stub for grpc_web_demo.echo.v1
  * @enhanceable
  * @public
  */
@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.4.0
 // 	protoc              v0.0.0
-// source: echo.proto
+// source: echo/v1/echo.proto
 
 
 /* eslint-disable */
@@ -17,10 +17,14 @@
 
 
 const grpc = {};
-grpc.web = require('grpc-web');
+import web from 'grpc-web';
+grpc.web = web;
 
 const proto = {};
-proto.grpc_web_demo1 = require('./echo_pb.js');
+proto.grpc_web_demo = {};
+proto.grpc_web_demo.echo = {};
+import v1 from './echo_pb.js';
+proto.grpc_web_demo.echo.v1 = v1;
 
 /**
  * @param {string} hostname
@@ -30,7 +34,7 @@ proto.grpc_web_demo1 = require('./echo_pb.js');
  * @struct
  * @final
  */
-proto.grpc_web_demo1.EchoServiceClient =
+proto.grpc_web_demo.echo.v1.EchoServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'binary';
@@ -56,7 +60,7 @@ proto.grpc_web_demo1.EchoServiceClient =
  * @struct
  * @final
  */
-proto.grpc_web_demo1.EchoServicePromiseClient =
+proto.grpc_web_demo.echo.v1.EchoServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'binary';
@@ -77,39 +81,39 @@ proto.grpc_web_demo1.EchoServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.grpc_web_demo1.EchoRequest,
- *   !proto.grpc_web_demo1.EchoResponse>}
+ *   !proto.grpc_web_demo.echo.v1.EchoRequest,
+ *   !proto.grpc_web_demo.echo.v1.EchoResponse>}
  */
 const methodDescriptor_EchoService_Echo = new grpc.web.MethodDescriptor(
-  '/grpc_web_demo1.EchoService/Echo',
+  '/grpc_web_demo.echo.v1.EchoService/Echo',
   grpc.web.MethodType.UNARY,
-  proto.grpc_web_demo1.EchoRequest,
-  proto.grpc_web_demo1.EchoResponse,
+  proto.grpc_web_demo.echo.v1.EchoRequest,
+  proto.grpc_web_demo.echo.v1.EchoResponse,
   /**
-   * @param {!proto.grpc_web_demo1.EchoRequest} request
+   * @param {!proto.grpc_web_demo.echo.v1.EchoRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.grpc_web_demo1.EchoResponse.deserializeBinary
+  proto.grpc_web_demo.echo.v1.EchoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.grpc_web_demo1.EchoRequest} request The
+ * @param {!proto.grpc_web_demo.echo.v1.EchoRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.grpc_web_demo1.EchoResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.grpc_web_demo.echo.v1.EchoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.grpc_web_demo1.EchoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.grpc_web_demo.echo.v1.EchoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.grpc_web_demo1.EchoServiceClient.prototype.echo =
+proto.grpc_web_demo.echo.v1.EchoServiceClient.prototype.echo =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/grpc_web_demo1.EchoService/Echo',
+      '/grpc_web_demo.echo.v1.EchoService/Echo',
       request,
       metadata || {},
       methodDescriptor_EchoService_Echo,
@@ -118,22 +122,22 @@ proto.grpc_web_demo1.EchoServiceClient.prototype.echo =
 
 
 /**
- * @param {!proto.grpc_web_demo1.EchoRequest} request The
+ * @param {!proto.grpc_web_demo.echo.v1.EchoRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.grpc_web_demo1.EchoResponse>}
+ * @return {!Promise<!proto.grpc_web_demo.echo.v1.EchoResponse>}
  *     Promise that resolves to the response
  */
-proto.grpc_web_demo1.EchoServicePromiseClient.prototype.echo =
+proto.grpc_web_demo.echo.v1.EchoServicePromiseClient.prototype.echo =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/grpc_web_demo1.EchoService/Echo',
+      '/grpc_web_demo.echo.v1.EchoService/Echo',
       request,
       metadata || {},
       methodDescriptor_EchoService_Echo);
 };
 
 
-export default proto.grpc_web_demo1;
+export default proto.grpc_web_demo.echo.v1;
 

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package grpc_web_demo.user.v1;
+
+option go_package = ".;pb";
+
+import "options/gorm.proto";
+
+message User {
+	option (gorm.opts).ormable = true;
+	uint32 user_id = 1 [(gorm.field).tag = { column: "user_id", primary_key: true }];
+	string username = 2;
+	string first_name = 3;
+	string last_name = 4;
+	string gender = 5;
+	string password = 6;
+	uint32  status = 7;
+}

@@ -6,7 +6,8 @@ import (
 	"log"
 	"net"
 
-	"github.com/yangwawa0323/grpc_web_demo/pb"
+	pb_echo "github.com/yangwawa0323/grpc_web_demo/pb/echo/v1"
+	pb_user "github.com/yangwawa0323/grpc_web_demo/pb/user/v1"
 	"github.com/yangwawa0323/grpc_web_demo/service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -20,9 +21,15 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
+	// Create service servers
 	echoServer := service.NewEchoServer()
 
-	pb.RegisterEchoServiceServer(grpcServer, echoServer)
+	userServer := service.NewUserServiceServer()
+
+	// Register service servers to grpc server
+	pb_echo.RegisterEchoServiceServer(grpcServer, echoServer)
+
+	pb_user.RegisterUserSearchServiceServer(grpcServer, userServer)
 
 	reflection.Register(grpcServer)
 
