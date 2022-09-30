@@ -104,6 +104,19 @@ proto.grpc_web_demo.user = {};
 + proto.grpc_web_demo.user.v1 = v1 
 ``` 
 
+### Dockernify
+We are put all the code in container. to start the demo. you need docker environment in your OS. Windows 10 user can install `Docker Desktop`
+
+To start the docker containers by running following command:
+```shell
+  $ cd docker
+  $ docker-compose
+```
+
+> NOTE: Please wait few minutes , when the MySQL Innodb container is initializate , the innodb engine waste a lot time. The other container is depends on the database started.
+
+After all is ready. open the browser, typed the `http://localhost`.
+
 ### to be continue...
 
 The next step , I will put all of applications to three different docker image. One for frontend , one for the gRPC proxy, and the last one for gRPC server.
