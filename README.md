@@ -119,4 +119,5 @@ After all is ready. open the browser, typed the `http://localhost`.
 
 ### to be continue...
 
-The next step , I will put all of applications to three different docker image. One for frontend , one for the gRPC proxy, and the last one for gRPC server.
+
+The next step , I will insert some of user's information into the database after the National Day of China. **Wish my country prosperity and her people happiness for ever**.
