@@ -13,7 +13,7 @@ function EchoPanel() {
 
 
   const newEchoService = () => {
-    return new client.EchoServiceClient("http://localhost:8199");
+    return new client.EchoServiceClient("http://proxy:8199");
   }
 
   const grpc_request = () => {

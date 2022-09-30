@@ -1,0 +1,9 @@
+FROM ubuntu
+
+WORKDIR /app
+
+COPY ./grpc_server ./
+
+EXPOSE 8090
+
+CMD [ "/app/grpc_server" ]

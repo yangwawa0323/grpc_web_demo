@@ -1,0 +1,6 @@
+FROM mysql
+WORKDIR /app
+
+COPY ./create-example-db.sql ./
+
+CMD [ "mysqld", "--init-file=/app/create-example-db.sql" ]

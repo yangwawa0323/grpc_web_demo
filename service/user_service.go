@@ -7,7 +7,8 @@ import (
 
 	gorm "github.com/jinzhu/gorm"
 
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	// _ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/go-sql-driver/mysql"
 
 	pb "github.com/yangwawa0323/grpc_web_demo/pb/user/v1"
 )
@@ -22,9 +23,14 @@ func migrate(db *gorm.DB, models ...interface{}) {
 }
 
 func NewUserServiceServer() *UserServiceServer {
-	db, err := gorm.Open("sqlite3", "users.db")
+	// Due to CGO_ENABLED=1 go-sqlite3 has build problem, we change to MySQL database
+	dsn := "root:example@tcp(db:3306)/example?charset=utf8mb4&parseTime=True&loc=Local"
+
+	// db, err := gorm.Open("sqlite3", "users.db")
+	db, err := gorm.Open("mysql", dsn)
 	if err != nil {
-		log.Fatal("Cannot open the sqlite3 database.")
+		log.Println(err)
+		log.Fatal("Cannot open the MySQL database.")
 	}
 
 	// migration
